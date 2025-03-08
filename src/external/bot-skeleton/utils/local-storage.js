@@ -61,6 +61,48 @@ export const getSavedWorkspaces = async () => {
     }
 };
 
+// XML Updator
+export const updateApolloXML = xml => {
+    // Find all block elements
+    const blocks = xml.getElementsByTagName('block');
+
+    // Convert blocks to an array if it's not already one
+    const blocksArray = Array.isArray(blocks) ? blocks : Object.values(blocks);
+
+    blocksArray.forEach(block => {
+        // Access the 'type' attribute node from the NamedNodeMap
+        const typeAttr = block.attributes.getNamedItem('type');
+
+        // Check if the 'type' attribute's value is 'purchase' and update it if so
+        if (typeAttr && typeAttr.value === 'purchase') {
+            typeAttr.value = 'apollo_purchase';
+        }
+    });
+
+    // Find all variable elements
+    const variables = xml.getElementsByTagName('variable');
+
+    // Iterate through each variable element
+    Array.from(variables).forEach(variable => {
+        // Check and add the 'type' attribute if missing
+        if (!variable.hasAttribute('type')) {
+            variable.setAttribute('type', '');
+        }
+
+        // Check and add the 'islocal' attribute if missing
+        if (!variable.hasAttribute('islocal')) {
+            variable.setAttribute('islocal', 'false');
+        }
+
+        // Check and add the 'iscloud' attribute if missing
+        if (!variable.hasAttribute('iscloud')) {
+            variable.setAttribute('iscloud', 'false');
+        }
+    });
+
+    return xml;
+};
+
 export const removeExistingWorkspace = async workspace_id => {
     const workspaces = await getSavedWorkspaces();
     const current_workspace_index = workspaces.findIndex(workspace => workspace.id === workspace_id);

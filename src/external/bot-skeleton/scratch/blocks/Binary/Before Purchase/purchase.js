@@ -2,7 +2,7 @@ import { localize } from '@deriv-com/translations';
 import { getContractTypeOptions } from '../../../shared';
 import { excludeOptionFromContextMenu, modifyContextMenu } from '../../../utils';
 
-window.Blockly.Blocks.purchase = {
+window.Blockly.Blocks.apollo_purchase = {
     init() {
         this.jsonInit(this.definition());
 
@@ -83,9 +83,9 @@ window.Blockly.Blocks.purchase = {
     restricted_parents: ['before_purchase'],
 };
 
-window.Blockly.JavaScript.javascriptGenerator.forBlock.purchase = block => {
+window.Blockly.JavaScript.javascriptGenerator.forBlock.apollo_purchase = block => {
     const purchaseList = block.getFieldValue('PURCHASE_LIST');
 
-    const code = `Bot.purchase('${purchaseList}');\n`;
+    const code = `Bot.apollo_purchase('${purchaseList}');\n`;
     return code;
 };

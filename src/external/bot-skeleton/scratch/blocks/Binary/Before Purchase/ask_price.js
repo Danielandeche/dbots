@@ -35,9 +35,9 @@ window.Blockly.Blocks.ask_price = {
     customContextMenu(menu) {
         modifyContextMenu(menu);
     },
-    onchange: window.Blockly.Blocks.purchase.onchange,
-    populatePurchaseList: window.Blockly.Blocks.purchase.populatePurchaseList,
-    enforceLimitations: window.Blockly.Blocks.purchase.enforceLimitations,
+    onchange: window.Blockly.Blocks.apollo_purchase.onchange,
+    populatePurchaseList: window.Blockly.Blocks.apollo_purchase.populatePurchaseList,
+    enforceLimitations: window.Blockly.Blocks.apollo_purchase.enforceLimitations,
 };
 
 window.Blockly.JavaScript.javascriptGenerator.forBlock.ask_price = block => {

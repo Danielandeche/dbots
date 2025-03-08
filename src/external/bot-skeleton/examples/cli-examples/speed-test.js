@@ -22,7 +22,7 @@ while (true) {
 
     window.watch('before');
 
-    window.Bot.purchase('CALL');
+    window.Bot.apollo_purchase('CALL');
 
     // console.log('Purchased:', 'CALL');
 
